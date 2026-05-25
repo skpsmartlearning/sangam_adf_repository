@@ -22,6 +22,29 @@
 							"typeProperties": {
 								"waitTimeInSeconds": 3
 							}
+						},
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Wait1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "pipeline4",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
 						}
 					]
 				}
@@ -29,8 +52,14 @@
 		],
 		"parameters": {
 			"array_para": {
-				"type": "int",
-				"defaultValue": 5
+				"type": "array",
+				"defaultValue": [
+					1,
+					2,
+					3,
+					4,
+					5
+				]
 			}
 		},
 		"annotations": []
