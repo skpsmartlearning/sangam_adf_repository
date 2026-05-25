@@ -8,31 +8,12 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"isSequential": false,
+					"items": {
+						"value": "@pipeline().parameters.array_para",
+						"type": "Expression"
+					},
+					"isSequential": true,
 					"activities": [
-						{
-							"name": "Execute Pipeline1",
-							"type": "ExecutePipeline",
-							"dependsOn": [
-								{
-									"activity": "Wait1",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"policy": {
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"pipeline": {
-									"referenceName": "pipeline4",
-									"type": "PipelineReference"
-								},
-								"waitOnCompletion": true
-							}
-						},
 						{
 							"name": "Wait1",
 							"type": "Wait",
