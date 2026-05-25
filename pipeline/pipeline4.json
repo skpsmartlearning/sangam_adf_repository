@@ -1,0 +1,92 @@
+{
+	"name": "pipeline4",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.array_para",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "ForEach1_copy1",
+							"type": "ForEach",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"items": {
+									"value": "@item()",
+									"type": "Expression"
+								},
+								"isSequential": true,
+								"activities": [
+									{
+										"name": "Execute Pipeline1_copy1",
+										"type": "ExecutePipeline",
+										"dependsOn": [
+											{
+												"activity": "Wait1_copy1",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"policy": {
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"pipeline": {
+												"referenceName": "pipeline4",
+												"type": "PipelineReference"
+											},
+											"waitOnCompletion": true
+										}
+									},
+									{
+										"name": "Wait1_copy1",
+										"type": "Wait",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"waitTimeInSeconds": 3
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"array_para": {
+				"type": "array",
+				"defaultValue": [
+					{
+						"collectioname": 1
+					},
+					{
+						"collectioname": 2
+					},
+					{
+						"collectioname": 3
+					},
+					{
+						"collectioname": 4
+					},
+					{
+						"collectioname": 4
+					}
+				]
+			}
+		},
+		"annotations": []
+	}
+}
