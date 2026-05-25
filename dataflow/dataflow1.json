@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Parquet1",
+						"referenceName": "DelimitedText2",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -55,7 +55,15 @@
 				"     errors: true) ~> cast1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     format: 'parquet',",
+				"     input(",
+				"          employee_id as string,",
+				"          employee_name as string,",
+				"          department as string,",
+				"          state as string,",
+				"          salary as string,",
+				"          age as string,",
+				"          bonus as string",
+				"     ),",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
