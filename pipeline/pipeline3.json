@@ -29,24 +29,8 @@
 		],
 		"parameters": {
 			"array_para": {
-				"type": "array",
-				"defaultValue": [
-					{
-						"collectioname": 1
-					},
-					{
-						"collectioname": 2
-					},
-					{
-						"collectioname": 3
-					},
-					{
-						"collectioname": 4
-					},
-					{
-						"collectioname": 4
-					}
-				]
+				"type": "int",
+				"defaultValue": 5
 			}
 		},
 		"annotations": []
