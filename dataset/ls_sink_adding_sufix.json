@@ -15,6 +15,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@{dataset().name}.csv",
+					"type": "Expression"
+				},
 				"fileSystem": "sink"
 			},
 			"columnDelimiter": ",",
