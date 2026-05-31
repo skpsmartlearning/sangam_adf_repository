@@ -10,6 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat(\nsubstring(item().name,0,lastIndexOf(item().name,'.')),\n'_',\nformatDateTime(utcNow(),'yyyyMMdd_HHmmss'),\n'.',\nlast(split(item().name,'.'))\n)",
+					"type": "Expression"
+				},
 				"fileSystem": "sink"
 			},
 			"columnDelimiter": ",",
