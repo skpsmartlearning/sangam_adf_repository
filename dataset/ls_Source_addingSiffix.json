@@ -15,7 +15,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "OfficeDataProject.csv",
+				"fileName": {
+					"value": "@{dataset().name}.csv",
+					"type": "Expression"
+				},
 				"fileSystem": "source"
 			},
 			"columnDelimiter": ",",
