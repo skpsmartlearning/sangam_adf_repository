@@ -1,0 +1,32 @@
+{
+	"name": "AzureSqlTable_sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "sourcefilename",
+				"type": "varchar"
+			},
+			{
+				"name": "sinktablename",
+				"type": "varchar"
+			},
+			{
+				"name": "schema1",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@item().sinktablename",
+				"type": "Expression"
+			}
+		}
+	}
+}
