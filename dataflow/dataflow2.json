@@ -1,0 +1,38 @@
+{
+	"name": "dataflow2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Json1",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "flatten1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          products as (id as integer, title as string, description as string, category as string, price as double, discountPercentage as double, rating as double, stock as integer, tags as string[], brand as string, sku as string, weight as integer, dimensions as (width as double, height as double, depth as double), warrantyInformation as string, shippingInformation as string, availabilityStatus as string, reviews as (rating as integer, comment as string, date as string, reviewerName as string, reviewerEmail as string)[], returnPolicy as string, minimumOrderQuantity as integer, meta as (createdAt as string, updatedAt as string, barcode as string, qrCode as string), images as string[], thumbnail as string)[],",
+				"          total as integer,",
+				"          skip as integer,",
+				"          limit as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'documentPerLine') ~> source1",
+				"source1 foldDown(unroll(products),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> flatten1"
+			]
+		}
+	}
+}
